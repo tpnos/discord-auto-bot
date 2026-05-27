@@ -4,7 +4,7 @@
   "description": "Minimal Discord bot with slash commands, buttons, dotenv, and Railway start script.",
   "main": "src/index.js",
   "scripts": {
-    "start": "npm run deploy && node src/index.js",
+    "start": "node src/index.js",
     "deploy": "node src/deploy-commands.js"
   },
   "engines": {
