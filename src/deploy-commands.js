@@ -2,9 +2,13 @@ require('dotenv').config();
 
 const { REST, Routes } = require('discord.js');
 const pingCommand = require('./commands/ping');
+const vendingMachineCommand = require('./commands/vending-machine');
+const testCommand = require('./commands/test');
 
 const commands = [
   pingCommand.data.toJSON(),
+  vendingMachineCommand.data.toJSON(),
+  testCommand.data.toJSON(),
 ];
 
 const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN);
@@ -23,7 +27,7 @@ async function main() {
     { body: commands },
   );
 
-  console.log('✅ Slash command 등록 완료: /ping');
+  console.log(`✅ Slash command 등록 완료: ${commands.map(c => `/${c.name}`).join(', ')}`);
 }
 
 main().catch((error) => {

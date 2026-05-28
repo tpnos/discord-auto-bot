@@ -11,10 +11,12 @@ const {
 
 const pingCommand = require('./commands/ping');
 const vendingMachineCommand = require('./commands/vending-machine');
+const testCommand = require('./commands/test');
 
 const commands = [
   pingCommand,
   vendingMachineCommand,
+  testCommand,
 ];
 
 const commandPayloads = commands.map((command) => command.data.toJSON());
