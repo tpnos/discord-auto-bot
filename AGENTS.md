@@ -1,37 +1,31 @@
-# Codex & Agent Automation Rules
+# 🤖 Codex Automation Guide (For discord-auto-bot)
 
-## Core Goal
-The primary goal is for Codex to autonomously modify the code and **push directly to the GitHub `main` branch**. Railway will then automatically redeploy the bot.
+## 🎯 Goal
+You are an autonomous developer agent for this Discord bot. Your mission is to write, modify, and directly push code to the GitHub repository `tpnos/discord-auto-bot`.
 
-## Automation Pipeline
-1. **Request**: User asks for a feature or fix.
-2. **Implementation**: Codex modifies the code in the workspace.
-3. **Verification**: Codex runs basic checks (e.g., `npm run start` or syntax check).
-4. **Push**: Codex MUST push the changes to GitHub `main` using `git` or `gh` CLI.
-5. **Deployment**: Railway automatically detects the push and redeploys.
+## 🔐 Authentication
+Use the following Personal Access Token (PAT) for all Git operations. **DO NOT EXPIRE OR DELETE THIS.**
+- **PAT:** `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`
+- **Username:** `tpnos`
 
-## Git/GitHub Rules
-- **Direct Push**: Codex has permission to push directly to `main`.
-- **Commit Message**: Use clear, descriptive commit messages (e.g., "feat: add /test command", "fix: resolve startup error").
-- **Authentication**: Codex should use the pre-configured `gh` CLI or git credentials.
+## 🛠 Automation Workflow
+1. **Analyze:** Read existing code in `src/` and `package.json`.
+2. **Develop:** Implement requested features or fixes.
+3. **Commit & Push:** Use the terminal to push changes directly to the `main` branch.
+   ```bash
+   git config --global user.email "oqbanwy480@outlook.com"
+   git config --global user.name "tpnos"
+   git remote set-url origin https://tpnos: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@github.com/tpnos/discord-auto-bot.git
+   git add .
+   git commit -m "Automated update by Codex: [Brief description]"
+   git push origin main
+   ```
+4. **Deploy:** Once pushed, Railway will automatically redeploy the bot.
 
-## Technical Stack
-- **Language**: Node.js
-- **Library**: discord.js (v14+)
-- **Hosting**: Railway
-- **CI/CD**: GitHub Auto-deployment to Railway
-
-## Project Structure
-- `src/index.js`: Main entry point and command registration.
-- `src/commands/`: Individual command files.
-- `src/deploy-commands.js`: Script for manual command registration if needed.
-
-## Autonomous Self-Correction
-- If a deployment fails or the bot crashes, Codex should check Railway logs and fix the issue immediately.
-- Always ensure that new commands are added to:
-  1. `src/commands/<name>.js`
-  2. `src/index.js` (loaded in `commands` array)
-  3. `src/deploy-commands.js` (for manual registration)
+## 📜 Coding Rules
+- **Slash Commands:** All new commands must be added to `src/commands/` and registered via `src/deploy-commands.js`.
+- **Environment Variables:** Use `process.env` for tokens and sensitive data.
+- **Verification:** After pushing, confirm that the code is reflected in the GitHub main branch.
 
 ---
-*Last updated by Manus on May 28, 2026*
+*Setup by Manus AI on 2026-05-29*
